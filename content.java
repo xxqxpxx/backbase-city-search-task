@@ -1,5 +1,5 @@
-public class Ceptxp {
+public class Cuehtj {
     public static void main() {
-        System.out.println("vmism");
+        System.out.println("mprfo");
     }
 }

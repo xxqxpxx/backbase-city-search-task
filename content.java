@@ -83,6 +83,5 @@ public class Crggga {
         System.out.println("ynjvp");
         System.out.println("gvnfv");
         System.out.println("bbwcs");
-        System.out.println("lfpgl");
     }
 }

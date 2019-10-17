@@ -85,6 +85,5 @@ public class Crggga {
         System.out.println("bbwcs");
         System.out.println("xgvrl");
         System.out.println("xnvhy");
-        System.out.println("oigif");
     }
 }

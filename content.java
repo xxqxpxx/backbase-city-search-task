@@ -1,5 +1,5 @@
-public class Cuehtj {
+public class Cpvkgr {
     public static void main() {
-        System.out.println("mprfo");
+        System.out.println("iufnd");
     }
 }

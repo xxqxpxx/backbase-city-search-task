@@ -1,5 +1,5 @@
-public class Cpvkgr {
+public class Cpfbei {
     public static void main() {
-        System.out.println("iufnd");
+        System.out.println("cpgxr");
     }
 }

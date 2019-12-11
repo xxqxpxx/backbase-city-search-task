@@ -1,6 +1,6 @@
 public class Chbxbd {
     public static void main() {
         System.out.println("ytulk");
-        System.out.println("pmeka");
+        System.out.println("mddge");
     }
 }

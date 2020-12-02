@@ -30,6 +30,5 @@ public class Crggga {
         System.out.println("upgol");
         System.out.println("fennp");
         System.out.println("nlxdo");
-        System.out.println("imtgb");
     }
 }

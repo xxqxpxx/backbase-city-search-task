@@ -100,6 +100,5 @@ public class Crggga {
         System.out.println("ceoni");
         System.out.println("ygyjg");
         System.out.println("gnlop");
-        System.out.println("spqjc");
     }
 }

@@ -1,5 +1,5 @@
-public class Cwwelb {
+public class Cjosax {
     public static void main() {
-        System.out.println("jxtnb");
+        System.out.println("tdtlv");
     }
 }

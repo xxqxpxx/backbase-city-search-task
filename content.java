@@ -1,5 +1,5 @@
-public class Cjosax {
+public class Cupmmp {
     public static void main() {
-        System.out.println("tdtlv");
+        System.out.println("wwuye");
     }
 }

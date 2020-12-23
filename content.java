@@ -1,5 +1,5 @@
-public class Cgvoga {
+public class Ctcpdi {
     public static void main() {
-        System.out.println("eoppr");
+        System.out.println("vgijg");
     }
 }

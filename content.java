@@ -1,5 +1,5 @@
-public class Ctcpdi {
+public class Cusnps {
     public static void main() {
-        System.out.println("vgijg");
+        System.out.println("qhdwa");
     }
 }

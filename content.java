@@ -34,6 +34,6 @@ public class Crggga {
         System.out.println("xvecm");
         System.out.println("pbcdh");
         System.out.println("cpuib");
-        System.out.println("amdrh");
+        System.out.println("xcmmn");
     }
 }

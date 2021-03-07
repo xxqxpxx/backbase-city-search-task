@@ -35,6 +35,5 @@ public class Crggga {
         System.out.println("pbcdh");
         System.out.println("cpuib");
         System.out.println("ndsra");
-        System.out.println("xfukk");
     }
 }

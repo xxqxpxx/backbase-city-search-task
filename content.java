@@ -2,6 +2,6 @@ public class Crggga {
     public static void main() {
         System.out.println("jkssm");
         System.out.println("qyuvf");
-        System.out.println("rwapx");
+        System.out.println("vpluh");
     }
 }

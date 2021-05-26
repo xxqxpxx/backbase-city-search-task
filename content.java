@@ -10,6 +10,6 @@ public class Crggga {
         System.out.println("mobjn");
         System.out.println("fwuae");
         System.out.println("kddgj");
-        System.out.println("fkpwt");
+        System.out.println("awtex");
     }
 }

@@ -46,6 +46,5 @@ public class Crggga {
         System.out.println("lxslw");
         System.out.println("lcnsn");
         System.out.println("dexxd");
-        System.out.println("wykqf");
     }
 }

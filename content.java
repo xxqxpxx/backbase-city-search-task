@@ -11,6 +11,6 @@ public class Crggga {
         System.out.println("fwuae");
         System.out.println("kddgj");
         System.out.println("fihww");
-        System.out.println("rjkrf");
+        System.out.println("wiahr");
     }
 }

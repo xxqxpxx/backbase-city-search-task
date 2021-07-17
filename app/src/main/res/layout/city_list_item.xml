@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/itemContainer"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/purple_200"
+    android:padding="5dp">
+
+    <TextView
+        android:id="@+id/itemCityTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:text="city"/>
+
+    <TextView
+        android:id="@+id/itemCitySubtite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="country"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        />
+
+</LinearLayout>

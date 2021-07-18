@@ -1,4 +1,4 @@
-package com.example.backbase.presentation.ui.example
+package com.example.backbase.presentation.ui.citiesList.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -28,9 +28,9 @@ abstract class SortedListAdapter<T : SortedListAdapter.ViewModel?>
         fun test(item: T): Boolean
     }
 
-    private val mInflater: LayoutInflater
+    private val mInflater: LayoutInflater = LayoutInflater.from(context)
     private val mSortedList: SortedList<T>
-    private val mComparator: Comparator<T>
+    private val mComparator: Comparator<T> = comparator
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CitiesViewHolder {
         return CitiesViewHolder.from(parent)
@@ -46,23 +46,13 @@ abstract class SortedListAdapter<T : SortedListAdapter.ViewModel?>
 
     protected abstract fun areItemContentsTheSame(oldItem: T, newItem: T): Boolean
 
-    /*override fun onBindViewHolder(holder: ViewHolder< T>, position: Int) {
-        val item = mSortedList[position]
-        (holder as ViewHolder<T>).bind(item)
-    }
-
-    */
-
     override fun onBindViewHolder(holder: CitiesViewHolder, position: Int) {
         with(holder) {
-
-        //    val context = binding.itemCityTitle.context
-         //   val resources = binding.itemCityTitle.resources
 
             val item = mSortedList[position] as City
 
 
-            binding.itemCityTitle.text = item.name
+            binding.itemCityTitle.text = item.name + ","
             binding.itemCitySubtite.text = item.country
 
             binding.itemContainer.setOnClickListener {
@@ -193,25 +183,9 @@ abstract class SortedListAdapter<T : SortedListAdapter.ViewModel?>
         }
     }
 
-    abstract class ViewHolder<T : ViewModel?>(itemView: View?) : RecyclerView.ViewHolder(
-        itemView!!
-    ) {
-        var currentItem: T? = null
-            private set
-
-        fun bind(item: T) {
-            currentItem = item
-            performBind(item)
-        }
-
-        protected abstract fun performBind(item: T)
-    }
-
     interface ViewModel
 
     init {
-        mInflater = LayoutInflater.from(context)
-        mComparator = comparator
         mSortedList = SortedList(itemClass, object : SortedList.Callback<T>() {
             override fun compare(a: T, b: T): Int {
                 return mComparator.compare(a, b)

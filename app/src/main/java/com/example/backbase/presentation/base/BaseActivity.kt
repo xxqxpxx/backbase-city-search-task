@@ -1,27 +1,39 @@
 package com.example.backbase.presentation.base
 
-import android.os.Bundle
-import androidx.annotation.CallSuper
-import androidx.annotation.LayoutRes
+import android.R
+import android.content.res.Configuration
+import android.view.MenuItem
+import android.view.Window
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 
-/**
- *  Base Activity for the entire app
- */
 abstract class BaseActivity : AppCompatActivity() {
 
-    /**
-     *  Provides layout id to be inflated
-     */
-    @LayoutRes
-    abstract fun layoutId(): Int
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // handle arrow click here
+        when (item.itemId) {
+            R.id.home -> {
+                onBackPressed() // close this activity and return to preview activity (if there is any)
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
-    @CallSuper
-    override fun onCreate(savedInstanceState: Bundle?) {
-        //Uncomment this line to have font enabled textviews
-        //LayoutInflaterCompat.setFactory2(layoutInflater, LillyLayoutInflater(delegate))
-        super.onCreate(savedInstanceState)
-        title = ""
-        setContentView(layoutId())
+    override fun applyOverrideConfiguration(overrideConfiguration: Configuration) {
+        if (overrideConfiguration != null) {
+            val uiMode = overrideConfiguration.uiMode
+            overrideConfiguration.setTo(baseContext.resources.configuration)
+            overrideConfiguration.uiMode = uiMode
+        }
+        super.applyOverrideConfiguration(overrideConfiguration)
+    }
+
+    protected fun setFullScreen() {
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        )
     }
 }

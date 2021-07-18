@@ -1,9 +1,10 @@
-package com.example.backbase.presentation.base.newBase
+package com.example.backbase.presentation.base
 
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import com.example.backbase.R
+import com.example.backbase.presentation.base.BaseActivity
 
 /**
  * Created by ahmed on 10/20/2016.

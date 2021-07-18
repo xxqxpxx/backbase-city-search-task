@@ -1,4 +1,4 @@
-package com.example.backbase.presentation.ui.example
+package com.example.backbase.presentation.ui.citiesList
 
 import com.example.backbase.core.manager.CoroutinesManager
 import com.example.backbase.presentation.ui.utils.ResourceProvider

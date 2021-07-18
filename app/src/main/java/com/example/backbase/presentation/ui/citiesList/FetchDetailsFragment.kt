@@ -1,6 +1,5 @@
-package com.example.backbase.presentation.ui.example
+package com.example.backbase.presentation.ui.citiesList
 
-import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -13,12 +12,10 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.backbase.data.model.City
 import com.example.backbase.databinding.FragmentFetchDetailsBinding
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
+import com.example.backbase.presentation.ui.citiesList.adapter.CitiesMainAdapter
+import com.example.backbase.presentation.ui.citiesList.adapter.CitiesMainAdapterSimpleCallback
 import org.koin.android.ext.android.inject
-import java.io.IOException
 import java.util.*
-import kotlin.Array
 import kotlin.Boolean
 import kotlin.CharSequence
 import kotlin.Comparator
@@ -27,23 +24,12 @@ import kotlin.String
 import kotlin.getValue
 
 
-class FetchDetailsFragment : Fragment() , CitiesMainAdapterSimpleCallback{
+class FetchDetailsFragment : Fragment() , CitiesMainAdapterSimpleCallback {
 
     private val vm by inject<FetchDetailsViewModel>()
 
     private lateinit var binding: FragmentFetchDetailsBinding
-
-    private lateinit var citiesMainAdapter : CitiesMainAdapterSimple
-
-    private val mComparator: Comparator<City> = Comparator { a, b -> a.name.compareTo(b.name) }
-
-    private lateinit var categoryList:ArrayList<City>
-
-    companion object {
-        const val TAG  = "FetchDogsFragment"
-        fun newInstance() =
-            FetchDetailsFragment()
-    }
+    private lateinit var citiesMainAdapter : CitiesMainAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,20 +45,25 @@ class FetchDetailsFragment : Fragment() , CitiesMainAdapterSimpleCallback{
         initObservers()
         vm.makeNetworkCall()
 
-        val gson = Gson()
+        vm.getCitiesList(requireContext())
 
-        val arrayTutorialType = object : TypeToken<Array<City>>() {}.type
-
-        val tutorials: Array<City> = gson.fromJson(getJsonDataFromAsset(requireContext() , "cities.json"), arrayTutorialType)
-
-         categoryList = tutorials.toCollection(ArrayList())
-
-        showItems(categoryList)
     }
+
+    private fun initObservers() {
+        vm.updateEvent.observe(viewLifecycleOwner, {
+            // Update UI here
+        })
+
+        vm.updateCitiesList.observe(viewLifecycleOwner, { showItems(it) })
+
+        vm.updateCitiesListAfterFilter.observe(viewLifecycleOwner, { updateListAfterFilter(it) })
+
+
+    }
+
 
     private fun showItems(arrayOfCitys: ArrayList<City>) {
         initRecyclerView(arrayOfCitys)
-
         initSearch()
     }
 
@@ -93,10 +84,9 @@ class FetchDetailsFragment : Fragment() , CitiesMainAdapterSimpleCallback{
             override fun onTextChanged(
                 s: CharSequence, start: Int, before: Int, count: Int
             ) {
-                onQueryTextChange( s.toString())
+                vm.onQueryTextChange( s.toString())
             }
         })
-
 
 
     }
@@ -105,64 +95,17 @@ class FetchDetailsFragment : Fragment() , CitiesMainAdapterSimpleCallback{
     private fun initRecyclerView(arrayOfCitys: ArrayList<City>) {
         val layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         binding.mainList.layoutManager = layoutManager
-
-        citiesMainAdapter = CitiesMainAdapterSimple( this , mComparator , requireContext())
-
-        citiesMainAdapter.edit()
-            .replaceAll(arrayOfCitys)
-            .commit();
-
+        citiesMainAdapter = CitiesMainAdapter( this , vm.getComparator() , requireContext())
+        citiesMainAdapter.edit().replaceAll(arrayOfCitys).commit();
         binding.mainList.adapter = citiesMainAdapter
-
     }
 
-
-    private fun getJsonDataFromAsset(context: Context, fileName: String): String {
-        val jsonString: String
-        try {
-            jsonString = context.assets.open(fileName).bufferedReader().use { it.readText() }
-        } catch (ioException: IOException) {
-            ioException.printStackTrace()
-            return ""
-        }
-        return jsonString
-    }
-
-
-    fun onQueryTextChange(query: String): Boolean {
-        val filteredModelList: ArrayList<City> = filter(categoryList, query)
-    //    citiesMainAdapter.replaceAll(filteredModelList)
-
+    private fun updateListAfterFilter(filteredModelList: ArrayList<City> ): Boolean {
         citiesMainAdapter.edit().replaceAll(filteredModelList).commit()
-
         binding.mainList.scrollToPosition(0)
         return true
     }
 
-    private fun filter(models: List<City>, query: String): ArrayList<City> {
-        val lowerCaseQuery = query.lowercase(Locale.getDefault())
-        val filteredModelList: ArrayList<City> = ArrayList<City>()
-        for (model in models) {
-            val text: String = model.name.lowercase(Locale.getDefault())
-            if (text.contains(lowerCaseQuery)) {
-                filteredModelList.add(model)
-            }
-        }
-        return filteredModelList
-    }
-
-
-
-    fun onQueryTextSubmit(query: String?): Boolean {
-        return false
-    }
-
-
-    private fun initObservers() {
-        vm.updateEvent.observe(viewLifecycleOwner, Observer {
-            // Update UI here
-        })
-    }
 
     override fun onCityItemClicked(position: Int) {
         goToMap(position)

@@ -1,4 +1,4 @@
-package com.example.backbase.presentation.ui.example
+package com.example.backbase.presentation.ui.citiesList.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import com.example.backbase.data.model.City
 import java.util.*
 
 
-class CitiesMainAdapterSimple(
+class CitiesMainAdapter(
     override var callback: CitiesMainAdapterSimpleCallback,
     var  mComparator : Comparator<City>,
     var context: Context,

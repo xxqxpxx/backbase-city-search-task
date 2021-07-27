@@ -80,9 +80,10 @@ dependencies {
 
     //NetWork
     implementation "com.squareup.retrofit2:retrofit:$retrofit"
-    implementation "com.google.code.gson:gson:$gson"
-    implementation "com.squareup.retrofit2:converter-gson:$gsonConverter"
+     implementation "com.squareup.retrofit2:converter-gson:$gsonConverter"
     implementation "com.squareup.okhttp3:logging-interceptor:$httpLogging"
+
+    implementation 'com.google.code.gson:gson:2.8.7'
 
     //Coroutine
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"

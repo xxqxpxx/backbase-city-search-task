@@ -27,7 +27,7 @@ abstract class BaseFragmentActivity : BaseActivity() {
 
     protected abstract val fragment: Fragment
     protected val alreadyAddedFragment: Fragment?
-        protected get() = supportFragmentManager
+        get() = supportFragmentManager
             .findFragmentById(R.id.fragment_container)
 
     override fun onBackPressed() {

@@ -8,26 +8,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.backbase.data.model.City
 import com.example.backbase.databinding.FragmentFetchDetailsBinding
+import com.example.backbase.presentation.App
 import com.example.backbase.presentation.ui.citiesList.adapter.CitiesMainAdapter
 import com.example.backbase.presentation.ui.citiesList.adapter.CitiesMainAdapterSimpleCallback
 import org.koin.android.ext.android.inject
 import java.util.*
-import kotlin.Boolean
-import kotlin.CharSequence
-import kotlin.Comparator
-import kotlin.Int
-import kotlin.String
-import kotlin.getValue
 
 
 class FetchDetailsFragment : Fragment() , CitiesMainAdapterSimpleCallback {
 
     private val vm by inject<FetchDetailsViewModel>()
-
     private lateinit var binding: FragmentFetchDetailsBinding
     private lateinit var citiesMainAdapter : CitiesMainAdapter
 
@@ -45,8 +38,9 @@ class FetchDetailsFragment : Fragment() , CitiesMainAdapterSimpleCallback {
         initObservers()
         vm.makeNetworkCall()
 
-        vm.getCitiesList(requireContext())
+        vm.setCityRepository((requireActivity().application as App).getCityRepository())
 
+        vm.start()
     }
 
     private fun initObservers() {
@@ -58,9 +52,24 @@ class FetchDetailsFragment : Fragment() , CitiesMainAdapterSimpleCallback {
 
         vm.updateCitiesListAfterFilter.observe(viewLifecycleOwner, { updateListAfterFilter(it) })
 
+        vm.updateCitiesListNew.observe(viewLifecycleOwner, { showItems(it) })
+
+        vm.progressVisible.observe(viewLifecycleOwner) { handleProgress(it) }
 
     }
 
+    private fun handleProgress(show : Boolean) {
+        if (show){
+            binding.progressLayout.visibility = View.VISIBLE
+        }else{
+            binding.progressLayout.visibility = View.GONE
+        }
+    }
+
+    private fun showItems(arrayOfCitys: List<City>) {
+        initRecyclerView(ArrayList(arrayOfCitys))
+        initSearch()
+    }
 
     private fun showItems(arrayOfCitys: ArrayList<City>) {
         initRecyclerView(arrayOfCitys)
@@ -68,29 +77,18 @@ class FetchDetailsFragment : Fragment() , CitiesMainAdapterSimpleCallback {
     }
 
     private fun initSearch() {
-
         binding.searchText.addTextChangedListener(object : TextWatcher {
 
-            override fun afterTextChanged(s: Editable) {
+            override fun afterTextChanged(searchQuery: Editable) {
+                vm.search(searchQuery.trim().toString());
             }
 
-            override fun beforeTextChanged(
-                s: CharSequence, start: Int,
-                count: Int, after: Int
-            ) {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
 
-            }
-
-            override fun onTextChanged(
-                s: CharSequence, start: Int, before: Int, count: Int
-            ) {
-                vm.onQueryTextChange( s.toString())
+            override fun onTextChanged(searchQuery: CharSequence, start: Int, before: Int, count: Int) {
             }
         })
-
-
     }
-
 
     private fun initRecyclerView(arrayOfCitys: ArrayList<City>) {
         val layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
@@ -114,5 +112,7 @@ class FetchDetailsFragment : Fragment() , CitiesMainAdapterSimpleCallback {
     private fun goToMap(position: Int) {
         Toast.makeText(requireContext() , "going to map" + position.toString() , Toast.LENGTH_LONG).show()
     }
+
+
 
 }

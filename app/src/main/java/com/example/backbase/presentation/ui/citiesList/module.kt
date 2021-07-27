@@ -7,7 +7,7 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val fetchDetailsModule = module {
-    viewModel { FetchDetailsViewModel(get(), get(), get()) }
+    viewModel { FetchDetailsViewModel(get(), get(), get()  ) }
     single { ResourceProvider(androidApplication()) }
     single { CoroutinesManager() }
 }

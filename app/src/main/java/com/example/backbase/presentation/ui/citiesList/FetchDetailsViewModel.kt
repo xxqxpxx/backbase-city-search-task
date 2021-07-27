@@ -8,6 +8,7 @@ import com.example.backbase.R
 import com.example.backbase.core.manager.CoroutinesManager
 import com.example.backbase.data.model.City
 import com.example.backbase.data.remote.example.FetchDetailsRepo
+import com.example.backbase.data.search.CityRepository
 import com.example.backbase.presentation.livedata.SingleLiveEvent
 import com.example.backbase.presentation.ui.utils.ResourceProvider
 import com.google.gson.Gson
@@ -20,10 +21,11 @@ import java.io.IOException
 import java.util.*
 import kotlin.collections.ArrayList
 
+
 class FetchDetailsViewModel(
     private val resourceProvider: ResourceProvider,
     private val coroutinesManager: CoroutinesManager,
-    private val fetchDetailsRepo: FetchDetailsRepo
+    private val fetchDetailsRepo: FetchDetailsRepo ,
 ) : ViewModel() {
 
     companion object {
@@ -33,6 +35,7 @@ class FetchDetailsViewModel(
     val updateEvent = SingleLiveEvent<Boolean>()
     val textObservable = ObservableField<String>()
 
+    private lateinit var cityRepository: CityRepository
 
     val updateCitiesList = SingleLiveEvent<ArrayList<City>>()
     val updateCitiesListAfterFilter = SingleLiveEvent<ArrayList<City>>()
@@ -40,6 +43,10 @@ class FetchDetailsViewModel(
     private lateinit var citiesList: ArrayList<City>
     private val mComparator: Comparator<City> = Comparator { a, b -> a.name.compareTo(b.name) }
 
+
+      var cities =  ObservableField<List<City>>(Collections.emptyList());
+      var progressVisible = SingleLiveEvent<Boolean>()
+     val updateCitiesListNew = SingleLiveEvent<List<City>>()
 
     fun makeNetworkCall() {
         Log.i(logTag, "Set TextView using DataBinding")
@@ -65,7 +72,9 @@ class FetchDetailsViewModel(
         }
     }
 
-
+    fun setCityRepository( cityRepository: CityRepository){
+        this.cityRepository = cityRepository
+    }
 
     fun getCitiesList(context: Context) {
         coroutinesManager.ioScope.launch {
@@ -73,7 +82,9 @@ class FetchDetailsViewModel(
             val arrayType = object : TypeToken<Array<City>>() {}.type
             val citiesObject: Array<City> = gson.fromJson(getJsonDataFromAsset(context, "cities.json"), arrayType)
             citiesList = citiesObject.toCollection(java.util.ArrayList())
-            updateCitiesList.postValue(citiesObject.toCollection(java.util.ArrayList()))
+            updateCitiesList.postValue(citiesList)
+
+            retrieveCities()
         }
     }
 
@@ -109,8 +120,30 @@ class FetchDetailsViewModel(
         return filteredModelList
     }
 
+    private fun retrieveCities() {
+        cityRepository.getCitiesList { citiesList ->
+            cities.set(citiesList)
+            progressVisible.postValue(false)
+            updateCitiesListNew.postValue(cities.get())
+        }
+    }
+
+    private fun retrieveCity() {
+            cities.set(citiesList)
+            progressVisible.postValue(false)
+    }
+
+    fun search(searchQuery: String) {
+        cityRepository.search(searchQuery , cities::set)
+        updateCitiesListNew.postValue(cities.get())
+    }
+
     fun getComparator(): Comparator<City> {
         return mComparator
+    }
+
+    fun start() {
+        retrieveCities()
     }
 
 }

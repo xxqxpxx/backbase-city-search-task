@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Backbase</string>
     <string name="info_txt">Check Logcat for more details</string>
+    <string name="progress_message">please wait</string>
 </resources>

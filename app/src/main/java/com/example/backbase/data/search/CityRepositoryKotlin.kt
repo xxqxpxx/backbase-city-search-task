@@ -16,8 +16,8 @@ class CityRepositoryKotlin(
     private val mapper: CityMapper,
     private val coroutinesManager: CoroutinesManager
 ) {
-    private val trieCache: AtomicReference<Tree<City>?> = AtomicReference()
-    private val allCitiesCache: AtomicReference<List<City>?> = AtomicReference()
+    private val trieCache: AtomicReference<Tree<City>> = AtomicReference()
+    private val allCitiesCache: AtomicReference<List<City>> = AtomicReference()
 
     fun getCitiesList(listener: OnCitiesReadyListener) {
         if (allCitiesCache.get() != null) {
@@ -72,11 +72,11 @@ class CityRepositoryKotlin(
     }
 
     interface OnCitiesReadyListener {
-        fun onCitiesReady(cities: List<City>?)
+        fun onCitiesReady(cities: List<City>)
     }
 
     interface OnSearchDoneListener {
-        fun onSearchDone(cities: List<City>?)
+        fun onSearchDone(cities: List<City>)
     }
 
 }

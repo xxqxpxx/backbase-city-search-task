@@ -9,7 +9,7 @@ import java.util.*
 
 class FetchDetailsViewModel : ViewModel() {
 
-    private lateinit var cityRepositoryKotlin: CityRepository
+    private lateinit var cityRepository: CityRepository
 
 
     private val mComparator: Comparator<City> = Comparator { a, b -> a.name.compareTo(b.name) }
@@ -20,12 +20,12 @@ class FetchDetailsViewModel : ViewModel() {
     val updateCitiesListNew = SingleLiveEvent<List<City>>()
 
 
-    fun setCityRepository(cityRepositoryKotlin: CityRepository) {
-        this.cityRepositoryKotlin = cityRepositoryKotlin
+    fun setCityRepository(cityRepository: CityRepository) {
+        this.cityRepository = cityRepository
     }
 
     private fun retrieveCities() {
-        cityRepositoryKotlin.getCitiesList { citiesList ->
+        cityRepository.getCitiesList { citiesList ->
             cities.set(citiesList)
             progressVisible.postValue(false)
             updateCitiesListNew.postValue(cities.get())
@@ -33,7 +33,7 @@ class FetchDetailsViewModel : ViewModel() {
     }
 
     fun search(searchQuery: String) {
-        cityRepositoryKotlin.search(searchQuery, cities::set)
+        cityRepository.search(searchQuery, cities::set)
         updateCitiesListNew.postValue(cities.get())
     }
 

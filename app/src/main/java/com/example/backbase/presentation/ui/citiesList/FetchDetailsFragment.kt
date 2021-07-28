@@ -66,7 +66,6 @@ class FetchDetailsFragment : Fragment(), CitiesMainAdapterSimpleCallback {
         binding.searchText.addTextChangedListener(object : TextWatcher {
 
             override fun afterTextChanged(searchQuery: Editable) {
-                vm.search(searchQuery.trim().toString())
             }
 
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
@@ -77,6 +76,7 @@ class FetchDetailsFragment : Fragment(), CitiesMainAdapterSimpleCallback {
                 before: Int,
                 count: Int
             ) {
+                vm.search(searchQuery.trim().toString())
             }
         })
     }

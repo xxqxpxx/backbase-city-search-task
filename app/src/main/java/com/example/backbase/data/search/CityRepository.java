@@ -22,7 +22,7 @@ public class CityRepository {
     private final AtomicReference<List<City>> allCitiesCache;
     private final CoroutinesManager coroutinesManager;
 
-    public CityRepository(CityDiskDataSource diskDataSource, CityMapper mapper , CoroutinesManager coroutinesManager) {
+    public CityRepository(CityDiskDataSource diskDataSource, CityMapper mapper, CoroutinesManager coroutinesManager) {
         this.diskDataSource = diskDataSource;
         this.mapper = mapper;
         this.trieCache = new AtomicReference<>();
@@ -54,7 +54,7 @@ public class CityRepository {
     }
 
 
-    private void sortAndStoreToCache(List<City> cities){
+    private void sortAndStoreToCache(List<City> cities) {
         sortCities(cities);
         allCitiesCache.set(cities);
     }

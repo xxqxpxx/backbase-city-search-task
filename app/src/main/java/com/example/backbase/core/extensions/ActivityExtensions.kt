@@ -11,7 +11,6 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 
 
-
 /**
  *  Helper method to get device screen width
  */
@@ -43,7 +42,8 @@ fun Activity.hideKeyboard() {
  */
 fun AppCompatActivity.replaceFragment(
     fragment: Fragment, frameId: Int, tag: String?,
-    isAddToBackStack: Boolean = false) {
+    isAddToBackStack: Boolean = false
+) {
     supportFragmentManager.transact {
         replace(frameId, fragment, tag)
         if (isAddToBackStack) addToBackStack(tag)
@@ -55,7 +55,8 @@ fun AppCompatActivity.replaceFragment(
  */
 fun AppCompatActivity.addFragment(
     fragment: Fragment, frameId: Int, tag: String?,
-    isAddToBackStack: Boolean = false) {
+    isAddToBackStack: Boolean = false
+) {
     supportFragmentManager.transact {
         add(frameId, fragment, tag)
         if (isAddToBackStack) addToBackStack(tag)

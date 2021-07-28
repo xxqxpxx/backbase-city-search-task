@@ -3,8 +3,6 @@ package com.example.backbase.presentation
 import android.app.Application
 import com.example.backbase.core.manager.CoroutinesManager
 import com.example.backbase.core.utils.FileHelper
-import com.example.backbase.data.remote.example.fetchDetailsRemoteModule
-import com.example.backbase.data.remote.networkModule
 import com.example.backbase.data.search.CityRepository
 import com.example.backbase.data.search.dataSource.CityDiskDataSource
 import com.example.backbase.data.search.dataSource.CityMapper
@@ -16,40 +14,42 @@ import org.koin.core.context.startKoin
 import java.util.concurrent.atomic.AtomicReference
 
 
-class App  : Application() {
+class App : Application() {
 
-    private var cityRepository: AtomicReference<CityRepository>  = AtomicReference();
+    private var cityRepositoryKotlin: AtomicReference<CityRepository> = AtomicReference()
 
     override fun onCreate() {
         super.onCreate()
 
         startKoin {
             androidContext(applicationContext)
-            modules(listOf(mainModule, fetchDetailsModule, fetchDetailsRemoteModule, networkModule
-            ))
+            modules(listOf(mainModule, fetchDetailsModule))
         }
 
-        cityRepository = AtomicReference()
+        cityRepositoryKotlin = AtomicReference()
 
     }
 
 
     fun getCityRepository(): CityRepository {
-        if (cityRepository.get() != null) {
-            return cityRepository.get()
+        if (cityRepositoryKotlin.get() != null) {
+            return cityRepositoryKotlin.get()
         }
 
         val fileHelper = provideFileHelper()
         val coroutinesManager = CoroutinesManager()
 
-        val diskDataSource = provideCityDiskDataSource(fileHelper , coroutinesManager)
-        val repository = CityRepository(diskDataSource, CityMapper() , coroutinesManager)
-        cityRepository.set(repository)
+        val diskDataSource = provideCityDiskDataSource(fileHelper, coroutinesManager)
+        val repository = CityRepository(diskDataSource, CityMapper(), coroutinesManager)
+        cityRepositoryKotlin.set(repository)
         return repository
     }
 
-    private fun provideCityDiskDataSource(fileHelper: FileHelper, coroutinesManager: CoroutinesManager): CityDiskDataSource {
-        return CityDiskDataSource(fileHelper, Gson() , coroutinesManager)
+    private fun provideCityDiskDataSource(
+        fileHelper: FileHelper,
+        coroutinesManager: CoroutinesManager
+    ): CityDiskDataSource {
+        return CityDiskDataSource(fileHelper, Gson(), coroutinesManager)
     }
 
     private fun provideFileHelper(): FileHelper {

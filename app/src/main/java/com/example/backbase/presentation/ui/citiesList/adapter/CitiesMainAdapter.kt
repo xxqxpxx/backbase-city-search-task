@@ -9,9 +9,9 @@ import java.util.*
 
 class CitiesMainAdapter(
     override var callback: CitiesMainAdapterSimpleCallback,
-    var  mComparator : Comparator<City>,
+    var mComparator: Comparator<City>,
     var context: Context,
-) : SortedListAdapter<City>(context , City::class.java ,  mComparator , callback) {
+) : SortedListAdapter<City>(context, City::class.java, mComparator, callback) {
 
 
     override fun areItemsTheSame(item1: City, item2: City): Boolean {

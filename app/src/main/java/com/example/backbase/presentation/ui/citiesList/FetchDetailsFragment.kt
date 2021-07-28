@@ -1,12 +1,13 @@
 package com.example.backbase.presentation.ui.citiesList
 
+import android.R
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.backbase.data.model.City
@@ -14,15 +15,16 @@ import com.example.backbase.databinding.FragmentFetchDetailsBinding
 import com.example.backbase.presentation.App
 import com.example.backbase.presentation.ui.citiesList.adapter.CitiesMainAdapter
 import com.example.backbase.presentation.ui.citiesList.adapter.CitiesMainAdapterSimpleCallback
+import com.example.backbase.presentation.ui.map.MapsFragment
 import org.koin.android.ext.android.inject
 import java.util.*
 
 
-class FetchDetailsFragment : Fragment() , CitiesMainAdapterSimpleCallback {
+class FetchDetailsFragment : Fragment(), CitiesMainAdapterSimpleCallback {
 
     private val vm by inject<FetchDetailsViewModel>()
     private lateinit var binding: FragmentFetchDetailsBinding
-    private lateinit var citiesMainAdapter : CitiesMainAdapter
+    private lateinit var citiesMainAdapter: CitiesMainAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,7 +38,6 @@ class FetchDetailsFragment : Fragment() , CitiesMainAdapterSimpleCallback {
         super.onViewCreated(view, savedInstanceState)
 
         initObservers()
-        vm.makeNetworkCall()
 
         vm.setCityRepository((requireActivity().application as App).getCityRepository())
 
@@ -44,24 +45,14 @@ class FetchDetailsFragment : Fragment() , CitiesMainAdapterSimpleCallback {
     }
 
     private fun initObservers() {
-        vm.updateEvent.observe(viewLifecycleOwner, {
-            // Update UI here
-        })
-
-        vm.updateCitiesList.observe(viewLifecycleOwner, { showItems(it) })
-
-        vm.updateCitiesListAfterFilter.observe(viewLifecycleOwner, { updateListAfterFilter(it) })
-
         vm.updateCitiesListNew.observe(viewLifecycleOwner, { showItems(it) })
-
         vm.progressVisible.observe(viewLifecycleOwner) { handleProgress(it) }
-
     }
 
-    private fun handleProgress(show : Boolean) {
-        if (show){
+    private fun handleProgress(show: Boolean) {
+        if (show) {
             binding.progressLayout.visibility = View.VISIBLE
-        }else{
+        } else {
             binding.progressLayout.visibility = View.GONE
         }
     }
@@ -71,21 +62,21 @@ class FetchDetailsFragment : Fragment() , CitiesMainAdapterSimpleCallback {
         initSearch()
     }
 
-    private fun showItems(arrayOfCitys: ArrayList<City>) {
-        initRecyclerView(arrayOfCitys)
-        initSearch()
-    }
-
     private fun initSearch() {
         binding.searchText.addTextChangedListener(object : TextWatcher {
 
             override fun afterTextChanged(searchQuery: Editable) {
-                vm.search(searchQuery.trim().toString());
+                vm.search(searchQuery.trim().toString())
             }
 
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
 
-            override fun onTextChanged(searchQuery: CharSequence, start: Int, before: Int, count: Int) {
+            override fun onTextChanged(
+                searchQuery: CharSequence,
+                start: Int,
+                before: Int,
+                count: Int
+            ) {
             }
         })
     }
@@ -93,26 +84,36 @@ class FetchDetailsFragment : Fragment() , CitiesMainAdapterSimpleCallback {
     private fun initRecyclerView(arrayOfCitys: ArrayList<City>) {
         val layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         binding.mainList.layoutManager = layoutManager
-        citiesMainAdapter = CitiesMainAdapter( this , vm.getComparator() , requireContext())
-        citiesMainAdapter.edit().replaceAll(arrayOfCitys).commit();
+        citiesMainAdapter = CitiesMainAdapter(this, vm.getComparator(), requireContext())
+        citiesMainAdapter.edit().replaceAll(arrayOfCitys).commit()
         binding.mainList.adapter = citiesMainAdapter
     }
 
-    private fun updateListAfterFilter(filteredModelList: ArrayList<City> ): Boolean {
-        citiesMainAdapter.edit().replaceAll(filteredModelList).commit()
-        binding.mainList.scrollToPosition(0)
-        return true
+    override fun onCityItemClicked(city: City) {
+        goToMap(city)
     }
 
+    private fun goToMap(city: City) {
 
-    override fun onCityItemClicked(position: Int) {
-        goToMap(position)
+        val intent = Intent()
+        intent.putExtra("lat", city.coord.lat)
+        intent.putExtra("long", city.coord.lon)
+
+        val fragment = MapsFragment.newInstance(intent)
+
+        requireActivity().supportFragmentManager
+            .beginTransaction()
+            .add(
+                com.example.backbase.R.id.fragment_container,
+                fragment,
+                fragment.javaClass.simpleName
+            )
+            .setCustomAnimations(
+                R.anim.slide_in_left,
+                R.anim.slide_out_right
+            )
+            .addToBackStack(fragment.javaClass.simpleName)
+            .commit()
+
     }
-
-    private fun goToMap(position: Int) {
-        Toast.makeText(requireContext() , "going to map" + position.toString() , Toast.LENGTH_LONG).show()
-    }
-
-
-
 }

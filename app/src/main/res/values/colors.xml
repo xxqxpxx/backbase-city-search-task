@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-
         <!--Theme Colors-->
         <!--    main brand colors -->
         <color name="main_brand_color">@color/blue_main</color>
         <color name="dark_main_brand_color">#005FAE</color>
+        <color name="colorAccent">#E12228</color>
+        <color name="black">#FF000000</color>
+
         <color name="light_main_brand_color">@color/blue_light</color>
         <color name="light_main_brand_color_shadow">#D4E8FF</color>
         <color name="overlay_main_brand_color">@color/white</color>
@@ -62,50 +58,7 @@
         <color name="chip_main_brand_color_active_state_background">@color/light_main_brand_color</color>
 
 
-
-        <!--    State  colors -->
-        <color name="error_state_text">@color/red_main</color>
-        <color name="error_state_background">@color/red_light</color>
-        <color name="success_state_text">@color/green_main</color>
-        <color name="success_state_background">@color/green_light</color>
-        <color name="order_status_delivered">@color/green_main</color>
-        <color name="order_status_placed">@color/blue_secondary</color>
-        <color name="order_status_processing">@color/blue_secondary</color>
-        <color name="order_status_out_for_delivery">@color/blue_secondary</color>
-        <color name="order_status_scheduled">@color/blue_secondary</color>
-        <color name="order_status_cancelled">@color/red_main</color>
-
-        <!--    text  colors -->
-        <color name="dark_main_text_color">@color/gray_800</color>
-        <color name="light_main_text_color">@color/gray_700</color>
-        <color name="darker_disabled_text_color">@color/manatee_gray</color>
-        <color name="hint_text_color">@color/gray_600</color>
-        <!--used on text with white background -->
-        <color name="disabled_text_color">@color/gray_600</color>
-
-        <!--    screen background-->
-        <color name="default_background_darker">@color/gray_300</color>
-        <color name="default_background_color">@color/gray_100</color>
-        <color name="secondary_background_color">@color/white</color>
-
-        <!--    ratings-->
-        <color name="rating_excellent_color">@color/green_main</color>
-
-        <!--    cards-->
-        <color name="card_background_color">@color/white</color>
-        <!--todo figure this out-->
-        <color name="light_brand_card_bg">@color/blue_secondary</color>
-        <color name="card_light_blue_color">@color/polar_blue</color>
-
-        <!--    carts-->
-        <color name="cart_bg">@color/green_main</color>
-        <!--End of theme colors-->
-
-        <!--todo figure this out-->
-        <color name="colorAccent">#E12228</color>
-        <color name="rating_bad_color">#ff5647</color>
-
-        <!--yellows-->
+             <!--yellows-->
         <color name="md_yellow_800">#F9A825</color>
         <color name="rating_average_color">#ffb11e</color>
         <color name="golden_stars">#FFC536</color>

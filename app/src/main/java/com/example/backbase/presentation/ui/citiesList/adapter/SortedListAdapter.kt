@@ -2,7 +2,6 @@ package com.example.backbase.presentation.ui.citiesList.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SortedList
@@ -12,7 +11,11 @@ import java.util.*
 
 
 abstract class SortedListAdapter<T : SortedListAdapter.ViewModel?>
-    (context: Context, itemClass: Class<T>, comparator: Comparator<T>, open var callback: CitiesMainAdapterSimpleCallback
+    (
+    context: Context,
+    itemClass: Class<T>,
+    comparator: Comparator<T>,
+    open var callback: CitiesMainAdapterSimpleCallback
 ) : RecyclerView.Adapter<SortedListAdapter.CitiesViewHolder>() {
     interface Editor<T : ViewModel?> {
         fun add(item: T): Editor<T>
@@ -51,12 +54,14 @@ abstract class SortedListAdapter<T : SortedListAdapter.ViewModel?>
 
             val item = mSortedList[position] as City
 
-
             binding.itemCityTitle.text = item.name + ","
             binding.itemCitySubtite.text = item.country
 
+            binding.itemCityLat.text = item.coord.lat.toString() + ","
+            binding.itemCityLong.text = item.coord.lon.toString()
+
             binding.itemContainer.setOnClickListener {
-                callback.onCityItemClicked(position)
+                callback.onCityItemClicked(item)
             }
 
         }
@@ -232,5 +237,5 @@ abstract class SortedListAdapter<T : SortedListAdapter.ViewModel?>
 }
 
 interface CitiesMainAdapterSimpleCallback {
-    fun onCityItemClicked(position: Int)
+    fun onCityItemClicked(position: City)
 }

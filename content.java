@@ -242,6 +242,6 @@ public class Crggga {
 =======
         System.out.println("ywfgn");
 >>>>>>> 51953e2 (add code in files types: .java)
->>>>>>> 52f5cf472d6ee263bc60e83cb7ab66a96efc17b3
+        System.out.println("nrfto");
     }
 }

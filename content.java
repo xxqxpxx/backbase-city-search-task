@@ -131,10 +131,13 @@ public class Crggga {
         System.out.println("fwouv");
         System.out.println("oxahg");
         System.out.println("tpgvm");
+<<<<<<< HEAD
         System.out.println("gtfau");
         System.out.println("cogia");
         System.out.println("hdvpw");
         System.out.println("nbxvy");
         System.out.println("xmsif");
+=======
+>>>>>>> 03c2506 (add code in files types: .java,.xml,.kt)
     }
 }

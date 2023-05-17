@@ -138,6 +138,7 @@ public class Crggga {
         System.out.println("cogia");
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         System.out.println("hdvpw");
         System.out.println("nbxvy");
         System.out.println("xmsif");
@@ -155,5 +156,8 @@ public class Crggga {
 =======
         System.out.println("bfjpy");
 >>>>>>> d7a5506 (add code in files types: .xml,.java,.kt)
+=======
+        System.out.println("xsmio");
+>>>>>>> bf4edfc (add code in files types: .xml,.java,.kt,)
     }
 }

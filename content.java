@@ -134,6 +134,5 @@ public class Crggga {
         System.out.println("gtfau");
         System.out.println("cogia");
         System.out.println("xsmio");
-        System.out.println("mggtb");
     }
 }

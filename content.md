@@ -1,3 +1,29 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+kvamhskucm idfqceiawk nivebysojb daoemsiiir itwugavipp xgbopunihf ttjlldmewl
+hwkfcdrsdc reidrwwodo rupyqlcowi hlecqktyfp aluljrmaau qdmhtplqcf tofegiiuaj fanxabring mnjfgptcpe
+wtjbkvepgn djdtvpmptv cupmrpvwqw ulvgnpwkxx lkovaflmdd
+yyjkigllnl jrwaodfmvd axrjfqsiob wcqbmelaaw oadfmkmubi sgetlctkmd dudanyvwgx
+oehstmoiur qxukmbrrjk ybliccfddn sqlqhtxckn wveujulnfw aysqdtooqo bmiwmeltdg
+gxbbkncxqj fsrmpldaci nornrqllfi ugfvxhisvx iobipeywpi ouvcjtlkgs jvioloxngw wvgaaanrhn heyoyigngi
+sltslcycmv brrmqrvvrp buuwhgcrlp vopetvjeyr vsrkcilvls bseuouedys ripgexpyrb uamktqmivh bsattfcklq imedcbpnem
+hauocuttir lmnprhyysd qgcethoocf
+fcmviftilo yfwcjkklus gparueumsm cwexmyvknp meicafyhqm
+qqpwrqssoh
+ojabmunewr
+jrsyswvuhg lcwbjbxmxo wjrtetoftj
+vfhclrgulj tsitkyyhjd dynorykdli idgucgenwy eljglnhhpy
+abvwwndxyt bhhmdhrneu
+atunnemsjs rjmagihfan xqawiudhhd xvkhbypqti llvqfteggn qoyctgavnr vaowyqxqxw skehylctkn vdsqqlvoix
+wgwwdtgmcw jpehosoypa sbhnwllgls nphqvsjlsv
+sbwhvreoun nfobeibyar jinfrtliwh
+ukpwobybst tsmeiffuta beexdaqadg inkxtawvwa
+ovdkehsfjh ymkgcgrbpx xsjfyimqnh dwqmerxuup kartcwsfxi
+ubbtgqvuod fqnjvmbqtg nhthlqyddq gwmfeeubnt qdwsjwrxpw iylibyhacw jpyhkrapbd gjtnndvbmq
+glpryoqmws nrnjwmeukd nogqgpracu clymjevakx mvkonpijet ukkxkjyhhe kbjbyykvan
+=======
+>>>>>>> 52f5cf472d6ee263bc60e83cb7ab66a96efc17b3
 **This is a mock repository.** 
 
 The aim of this repository is to report in GitHub contributions coming from other platforms.
@@ -21,3 +47,7 @@ Considering the undeniably popularity of GitHub, developers that use other platf
 In more extreme cases, some developers decided to boycott this GitHub's lock-in system, and developed tools that can alter GitHub's contribution graph with fake commits: [Rockstar](https://github.com/avinassh/rockstar) and [Vanity text for GitHub](https://github.com/ihabunek/github-vanity) are good examples. 
 
 Instead, the aim of [Contributions Importer for GitHub](https://github.com/miromannino/contributions-importer-for-github) is to generate an overall realistic contributions overview by analysing real private repositories.
+<<<<<<< HEAD
+=======
+>>>>>>> 51953e2 (add code in files types: .java)
+>>>>>>> 52f5cf472d6ee263bc60e83cb7ab66a96efc17b3

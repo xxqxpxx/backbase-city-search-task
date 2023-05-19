@@ -130,6 +130,7 @@ public class Crggga {
         System.out.println("ouuuj");
         System.out.println("fwouv");
         System.out.println("oxahg");
+<<<<<<< HEAD
         System.out.println("tpgvm");
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -163,5 +164,84 @@ public class Crggga {
 =======
         System.out.println("mggtb");
 >>>>>>> 49c89e9 (add code in files types: .gradle,.java,.xml)
+=======
+<<<<<<< HEAD
+        System.out.println("tcncr");
+        System.out.println("tlxey");
+        System.out.println("lqvcu");
+        System.out.println("suxok");
+        System.out.println("psupe");
+        System.out.println("winki");
+        System.out.println("gfdqu");
+        System.out.println("stnwh");
+        System.out.println("puwre");
+        System.out.println("xqyis");
+        System.out.println("fmcby");
+        System.out.println("kmeox");
+        System.out.println("ltbpo");
+        System.out.println("thahk");
+        System.out.println("evove");
+        System.out.println("rbvim");
+        System.out.println("wirid");
+        System.out.println("framt");
+        System.out.println("gcrgw");
+        System.out.println("tdoea");
+        System.out.println("lvhfv");
+        System.out.println("cqsaf");
+        System.out.println("geqob");
+        System.out.println("dsxxh");
+        System.out.println("yxpvg");
+        System.out.println("trtyw");
+        System.out.println("xljnl");
+        System.out.println("witpl");
+        System.out.println("uixbt");
+        System.out.println("ufnvs");
+        System.out.println("hlnsw");
+        System.out.println("cutgf");
+        System.out.println("hqthh");
+        System.out.println("xocrp");
+        System.out.println("kmfgm");
+        System.out.println("wtfmx");
+        System.out.println("mlwib");
+        System.out.println("iylbb");
+        System.out.println("sjily");
+        System.out.println("obels");
+        System.out.println("oyakc");
+        System.out.println("wyayl");
+        System.out.println("rxxdr");
+        System.out.println("tbuaq");
+        System.out.println("jaggm");
+        System.out.println("nguyi");
+        System.out.println("yhwqm");
+        System.out.println("iifra");
+        System.out.println("shfdv");
+        System.out.println("eulyu");
+        System.out.println("hpeug");
+        System.out.println("quyyg");
+        System.out.println("toesy");
+        System.out.println("lybdx");
+        System.out.println("apiww");
+        System.out.println("tsxuk");
+        System.out.println("dnopr");
+        System.out.println("iamlh");
+        System.out.println("tesat");
+        System.out.println("dufte");
+        System.out.println("wmkgb");
+        System.out.println("ytkwu");
+        System.out.println("kocfd");
+        System.out.println("qjqjg");
+        System.out.println("edwnb");
+        System.out.println("ercsf");
+        System.out.println("drpqq");
+        System.out.println("lojbf");
+        System.out.println("pkdgt");
+        System.out.println("gmncb");
+        System.out.println("mmrtf");
+        System.out.println("otdeq");
+        System.out.println("jbyse");
+=======
+        System.out.println("ywfgn");
+>>>>>>> 51953e2 (add code in files types: .java)
+>>>>>>> 52f5cf472d6ee263bc60e83cb7ab66a96efc17b3
     }
 }

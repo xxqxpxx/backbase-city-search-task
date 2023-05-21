@@ -158,6 +158,10 @@ public class Crggga {
 >>>>>>> d7a5506 (add code in files types: .xml,.java,.kt)
 =======
         System.out.println("xsmio");
+<<<<<<< HEAD
 >>>>>>> bf4edfc (add code in files types: .xml,.java,.kt,)
+=======
+        System.out.println("mggtb");
+>>>>>>> 49c89e9 (add code in files types: .gradle,.java,.xml)
     }
 }

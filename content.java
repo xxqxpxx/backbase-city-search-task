@@ -130,6 +130,7 @@ public class Crggga {
         System.out.println("ouuuj");
         System.out.println("fwouv");
         System.out.println("oxahg");
+<<<<<<< HEAD
         System.out.println("tcncr");
         System.out.println("tlxey");
         System.out.println("lqvcu");
@@ -203,5 +204,8 @@ public class Crggga {
         System.out.println("mmrtf");
         System.out.println("otdeq");
         System.out.println("jbyse");
+=======
+        System.out.println("ywfgn");
+>>>>>>> 51953e2 (add code in files types: .java)
     }
 }
